@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class student {
+public:
+    string name;
+    int rno;
+    string prn;
+
+    void accept(int n); 
+    void display();      
+};
+
+void student::accept(int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "\nEnter the student details for student " << (i + 1) << ":";
+        cout << "\nName : ";
+        cin >> name;
+        cout << "Roll no : ";
+        cin >> rno;
+        cout << "PRN : ";
+        cin >> prn;
+    }
+}
+
+void student::display() {  
+    cout << rno << "\t" << name << "\t" << prn << "\n";
+}
+
+class result : public student{
+    public:
+    string sub[5];
+    int cia[5], sem[5];
+    void acceptR(int n);
+    void displayR();  
+};
+
+void student::acceptR(int n) {
+    for (int i = 0; i < n; i++) {
+    for(int j=0; j<5 ; j++){
+        cout << "\nEnter the student marks for student " << (i + 1) << ":";
+        cout << "\nSubject : ";
+        cin >> sub[j];
+        cout << "CIA : ";
+        cin >> cia[j];
+        cout << "End Sem : ";
+        cin >> sem[j];
+    }
+    }
+}
+
+void student::display() {
+    for(int j =0 ; j<n ; j++){  
+    for(int i =0 ; i<5 ; i++){ 
+    cout << "\n" << sub[i] << "\t" << cia[i] << "\t" << sem[i];
+    }
+}
+
+int main() {
+    int n;
+    cout << "\nEnter total number of students: ";
+    cin >> n;
+
+    student s[10];
+
+    for (int i = 0; i < n; i++) {
+        s[i].accept(1);  
+    }
+
+    cout << "\nRoll No\tName\tPRN\n";
+    cout << "--------------------------\n";
+    for (int i = 0; i < n; i++) {
+        s[i].display();  
+    }
+    
+    cout << "\nRoll No\tName\tPRN\n";
+    cout << "--------------------------\n";
+    for (int i = 0; i < n; i++) {
+        s[i].display();  
+    }
+
+    return 0;
+}
