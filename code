@@ -18,6 +18,8 @@ void student::accept(int n) {
         cout << "\nName : ";
         cin >> name;
         cout << "Roll no : ";
+Hmm. We’re having trouble finding that site.
+
         cin >> rno;
         cout << "PRN : ";
         cin >> prn;
@@ -79,6 +81,84 @@ int main() {
     for (int i = 0; i < n; i++) {
         s[i].display();  
     }
+
+    return 0;
+}
+
+
+
+
+
+
+liked list 
+#include <iostream>
+using namespace std;
+
+class LMS {
+    string title, author, publisher;
+    int price;
+    LMS* next; 
+
+public:
+    void accept();
+    void display();
+};
+
+LMS* start = NULL; 
+
+void LMS::accept() {
+    LMS* newnode = new LMS; 
+    newnode->next = NULL; 
+    cout << "Enter Title, Author, Publisher, and Price:" << endl;
+    cin >> newnode->title >> newnode->author >> newnode->publisher >> newnode->price;
+
+    if (start == NULL) {
+        start = newnode; 
+    } else {
+        LMS* temp = start; 
+        while (temp->next != NULL) {
+            temp = temp->next; 
+        }
+        temp->next = newnode; 
+    }
+}
+
+void LMS::display() {
+    LMS* temp = start; 
+    if (temp == NULL) {
+        cout << "No books available." << endl;
+        return;
+    }
+    cout << "\nTitle\t\tAuthor\t\tPublisher\tPrice" << endl;
+    while (temp != NULL) {
+        cout << temp->title << "\t\t" 
+             << temp->author << "\t\t" 
+             << temp->publisher << "\t\t" 
+             << temp->price << endl;
+        temp = temp->next; 
+    }
+}
+
+int main() {
+    LMS library; 
+    int choice;
+    do {
+        cout << "1. Add Book\n2. Display Books\n3. Exit\nEnter your choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                library.accept(); 
+                break;
+            case 2:
+                library.display(); 
+                break;
+            case 3:
+                cout << "Exiting..." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while (choice != 3);
 
     return 0;
 }
